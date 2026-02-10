@@ -1,12 +1,17 @@
 #!/bin/bash
 set -e
 
-APP="acs-simple-"
+CONTAINER_NAME="acs-simple-prod"
+IMAGE_NAME="acs-simple:main"
 PORT="8090"
 
-docker rm -f ${APP}-prod || true
+echo "Stopping old container (if exists)..."
+docker rm -f ${CONTAINER_NAME} || true
+
+echo "Starting production container..."
 docker run -d \
-  --restart always \
-  --name ${APP}-prod \
+  --name ${CONTAINER_NAME} \
   -p ${PORT}:3000 \
-  ${APP}:main
+  ${IMAGE_NAME}
+
+echo "Production deploy SUCCESS"
