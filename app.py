@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route("/", methods=["GET"])
 def home():
     return jsonify({
-        "message": "Hello from ACS Simple App 🚀",
+        "message": "Hello from ACS Simple App 🚀. Revisi 3.1",
         "hostname": socket.gethostname(),
         "environment": os.getenv("APP_ENV", "staging"),
         "time": datetime.utcnow().isoformat()
