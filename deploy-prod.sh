@@ -12,6 +12,7 @@ docker rm -f ${CONTAINER_NAME} || true
 echo "Starting production container..."
 docker run -d \
   --name ${CONTAINER_NAME} \
+  -e APP_ENV=${APP_ENV} \
   -p ${PORT}:3000 \
   ${IMAGE_NAME}
 
